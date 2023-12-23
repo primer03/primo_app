@@ -18,9 +18,14 @@ module.exports = {
           '0%': { transform: 'scale(0)' },
           '100%': { transform: 'scale(1)' },
         },
+        zoomOut: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(0)' },
+        },
       },
       animation: {
         zoomIn: 'zoomIn 0.5s ease-in-out',
+        zoomOut: 'zoomOut 0.5s ease-in-out',
       },
     },
   },

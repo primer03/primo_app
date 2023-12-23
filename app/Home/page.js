@@ -7,7 +7,7 @@ export const metadata = {
   description: 'My page description',
 }
 export default function Home() {
-  
+
   return (
     <div>
       <Head>
@@ -15,7 +15,7 @@ export default function Home() {
         <meta property="og:title" content="My page title" key="title" />
       </Head>
       {/* <SelectChanel /> */}
-     <MessageUser />
+      <SelectChanel />
     </div>
   )
 }
