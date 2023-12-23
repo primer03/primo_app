@@ -26,7 +26,7 @@ export default function Page({ params }) {
         socketRef.current.on('message', (data) => {
             let dataz = JSON.parse(data);
             console.log(dataz.Channel);
-            if(params.id == dataz.Channel){
+            if (params.id == dataz.Channel) {
                 setMsgBlock(msgblock => [...msgblock, dataz]);
             }
         });
@@ -57,7 +57,10 @@ export default function Page({ params }) {
                             {Array.isArray(msgblock) && msgblock.map((item, index) => (
                                 <div key={index} className=' flex flex-row gap-2 items-center card animate-zoomIn box-border block p-3 bg-white shadow-lg rounded-md' style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                                     <img src={item.Image} className='w-10 h-10 rounded-full' />
-                                    <p>{item.Message}</p>
+                                    <div className=' w-full flex flex-col items-center gap-3'>
+                                        <p>{item.Username}</p>
+                                        <p>{item.Message}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -93,6 +93,7 @@ export default function MessageUser() {
                 Message: message,
                 Channel: Math.floor(Math.random() * 5) + 1,
                 Image: image,
+                Username: username,
             };
             socketRef.current.emit('send message', JSON.stringify(data));
             console.log(data);
