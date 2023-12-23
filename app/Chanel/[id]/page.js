@@ -54,14 +54,24 @@ export default function Page({ params }) {
                 <div className=' w-full'>
                     <div className=' flex flex-row gap-3 items-center justify-end'>
                         <div className=' w-full grid grid-cols-5 gap-3'>
+
                             {Array.isArray(msgblock) && msgblock.map((item, index) => (
-                                <div key={index} className=' flex flex-row gap-2 items-center card animate-zoomIn box-border block p-3 bg-white shadow-lg rounded-md' style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
-                                    <img src={item.Image} className='w-10 h-10 rounded-full' />
-                                    <div className=' w-full flex flex-col items-center gap-3'>
-                                        <p>{item.Username}</p>
-                                        <p>{item.Message}</p>
+                                <div key={index} className='animate-zoomIn w-full flex bg-white shadow-md rounded-md p-3'>
+                                    <div className='image h-14 w-14 border border-red-500 rounded-full'>
+                                        <img src={item.Image} className='w-full h-full rounded-full object-cover' />
+                                    </div>
+                                    <div className=' justify-center box-border p-1 flex flex-col gap-1'>
+                                        <p className='text-sm font-semibold'>{item.Username}</p>
+                                        <p className='text-xs'>{item.Message}</p>
                                     </div>
                                 </div>
+                                // <div key={index} className=' h-24 flex flex-row gap-2 items-center card animate-zoomIn box-border block p-3 bg-white shadow-lg rounded-md' style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>
+                                //     <img src={item.Image} className='w-10 h-10 rounded-full object-cover' />
+                                //     <div className=' w-full flex flex-col justify-start items-start gap-1'>
+                                //         <p>{item.Username}</p>
+                                //         <p>{item.Message}</p>
+                                //     </div>
+                                // </div>
                             ))}
                         </div>
                     </div>
