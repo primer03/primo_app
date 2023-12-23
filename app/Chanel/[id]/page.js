@@ -26,11 +26,7 @@ export default function Page({ params }) {
             socketRef.current.close();
         };
 
-        window.onbeforeunload = () => {
-            console.log('beforeunload');
-            socketRef.current.emit('chanel disconnect', params.id);
-            socketRef.current.close();
-        };
+        window.addEventListener('beforeunload', handleBeforeUnload);
     
         return () => {
             // ลบ event listener และทำการทำลาย socket เมื่อ component unmount
