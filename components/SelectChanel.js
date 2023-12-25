@@ -23,20 +23,20 @@ export default function SelectChanel() {
 
         socketRef.current.on('chanel', (data) => {
             console.log(`Chanel ${data} Connect`);
-            // setBorders(borders => {
-            //     const newBorders = [...borders];
-            //     newBorders[data - 1] = 'border-2 border-green-400 rounded-md';
-            //     return newBorders;
-            // });
+            setBorders(borders => {
+                const newBorders = [...borders];
+                newBorders[data - 1] = 'border-2 border-green-400 rounded-md';
+                return newBorders;
+            });
         });
 
         socketRef.current.on('chanelDis', (data) => {
             console.log(`Chanel ${data} Disconnect`);
-            // setBorders(borders => {
-            //     const newBorders = [...borders];
-            //     newBorders[data - 1] = 'border-2 border-pink-400 rounded-md';
-            //     return newBorders;
-            // });
+            setBorders(borders => {
+                const newBorders = [...borders];
+                newBorders[data - 1] = 'border-2 border-pink-400 rounded-md';
+                return newBorders;
+            });
         });
         return () => {
             // ทำการทำลาย socket เมื่อ component unmount
