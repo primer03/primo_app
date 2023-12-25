@@ -16,12 +16,16 @@ export default function Page({ params }) {
     const [row, setRow] = useState(1);
     useEffect(() => {
         const regex = new RegExp('^[0-5]+$');
+        var socketId = '';
         if (!regex.test(params.id)) {
             router.push('/'); // ใช้ router.push เพื่อนำทาง
             return;
         }
 
         socketRef.current = io('https://primo-server.onrender.com/', { transports: ['websocket'] });
+        socketRef.current.on('connect', () => {
+            console.log(`ID: ${socketRef.current.id}`);
+        });
         socketRef.current.emit('send chanel', params.id);
         socketRef.current.on('message', (data) => {
             let dataz = JSON.parse(data);
@@ -31,9 +35,6 @@ export default function Page({ params }) {
             }
         });
         const handleBeforeUnload = () => {
-
-            console.log('beforeunload');
-            socketRef.current.emit('send message', 'Disconnect');
             socketRef.current.emit('chanel disconnect', params.id);
             // socketRef.current.close();
         };
@@ -42,7 +43,7 @@ export default function Page({ params }) {
 
         return () => {
             // ลบ event listener และทำการทำลาย socket เมื่อ component unmount
-            // window.removeEventListener('beforeunload', handleBeforeUnload);
+            window.removeEventListener('beforeunload', handleBeforeUnload);
             if (socketRef.current) {
                 socketRef.current.disconnect();
             }

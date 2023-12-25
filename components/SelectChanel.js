@@ -13,6 +13,9 @@ export default function SelectChanel() {
         socketRef.current.on("connect", () => {
             console.log(`ID: ${socketRef.current.id}`);
         });
+        socketRef.current.on('your id', (id) => {
+            console.log(id);
+        });
 
         socketRef.current.on('message', (data) => {
             console.log(`Message: ${data}`);

@@ -35,6 +35,9 @@ export default function MessageUser() {
         socketRef.current.on('connect', () => {
             console.log(`ID: ${socketRef.current.id}`);
         });
+        socketRef.current.on('your id', (id) => {
+            console.log(id);
+        });
         return () => {
             socketRef.current.off('connect');
             socketRef.current.disconnect();
