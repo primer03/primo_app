@@ -23,6 +23,7 @@ export default function SelectChanel() {
 
         socketRef.current.on('chanel', (data) => {
             console.log(`Chanel ${data} Connect`);
+            console.log('xxx');
             setBorders(borders => {
                 const newBorders = [...borders];
                 newBorders[data - 1] = 'border-2 border-green-400 rounded-md';
